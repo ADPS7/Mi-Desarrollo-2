@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
-
-import 'login-pages/widget/failure_widget.dart';
+import 'login-pages/pages/pages_formulario.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const App());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class App extends StatelessWidget {
+  const App({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Failure()
+      home: ViewLogin(),
     );
   }
 }
-

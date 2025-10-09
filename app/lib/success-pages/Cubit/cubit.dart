@@ -1,14 +1,15 @@
 import 'dart:convert';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dio/dio.dart';
+
 import '../model/infoCarro.dart';
 import 'state.dart';
 
-class MyCubit extends Cubit<MyState> {
-  MyCubit() : super(IniciarState());
+class PageCubit extends Cubit<Estados> {
+  PageCubit() : super(PageInitial());
 
   void cargarCarro() async {
-    emit(CargandoState());
+    emit(PageLoading());
 
     final dio = Dio();
     final url = "https://raw.githubusercontent.com/MarkusGutierrez10/json/refs/heads/main/angel.json";
@@ -20,12 +21,12 @@ class MyCubit extends Cubit<MyState> {
       if (response.statusCode == 200) {
         final Map<String, dynamic> objectMap = jsonDecode(response.data);
         final carro = Carro(objectMap);
-        emit(SuccessState(carro));
+        emit(PageSuccess(carro));
       } else {
-        emit(ErrorState());
+        emit(PageFailure());
       }
     } catch (e) {
-      emit(ErrorState());
+      emit(PageFailure());
     }
   }
 }

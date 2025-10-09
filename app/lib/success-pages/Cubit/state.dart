@@ -2,20 +2,18 @@ import 'package:equatable/equatable.dart';
 
 import '../model/infoCarro.dart';
 
-class MyState extends Equatable {
-  MyState();
 
+sealed class Estados extends Equatable {
+  Estados();
+  
   @override
   List<Object> get props => [];
 }
 
-class IniciarState extends MyState {}
-
-class CargandoState extends MyState {}
-
-class SuccessState extends MyState {
+class PageInitial extends Estados{}
+class PageLoading extends Estados{}
+class PageSuccess extends Estados{
   final Carro carro;
-  SuccessState(this.carro);
+  PageSuccess(this.carro);
 }
-
-class ErrorState extends MyState {}
+class PageFailure extends Estados{}

@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Loading extends StatelessWidget {
-  const Loading({
-    super.key,
-  });
+class ViewCargando extends StatelessWidget {
+  const ViewCargando({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: CircularProgressIndicator(
-        color: Colors.red, // ✅ Cargando rojo
+        color: Colors.blue, // Cargando azul
       ),
     );
   }
