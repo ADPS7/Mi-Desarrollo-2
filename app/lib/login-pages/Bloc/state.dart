@@ -1,5 +1,14 @@
-abstract class MyState {}
+import 'package:equatable/equatable.dart';
 
-class InitialState extends MyState {
-  // Puedes agregar propiedades como loading, data, etc.
+sealed class HomeState extends Equatable {
+  const HomeState();
+  
+  @override
+  List<Object?> get props => [];
 }
+
+class Initial extends HomeState{}
+class Cargando extends HomeState{}
+class Correcto extends HomeState{}
+class Error extends HomeState{}
+

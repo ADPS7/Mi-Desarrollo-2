@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:perfil/login-pages/widget/failure_widget.dart';
 
-import 'login-pages/widget/failure_widget.dart';
+import 'success-pages/widget/inicio_widget.dart';
 
 void main() {
   runApp(const MyApp());

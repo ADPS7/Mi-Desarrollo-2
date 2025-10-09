@@ -1,5 +1,18 @@
-abstract class MyEvent {}
+import 'package:equatable/equatable.dart';
 
-class InitialEvent extends MyEvent {
-  // Puedes agregar parámetros si lo necesitas
+sealed class HomeEvent extends Equatable {
+  const HomeEvent();
+
+  @override
+  List<Object> get props => [];
+}
+
+final class HomeSearchPressed extends HomeEvent {
+  final String user;
+  final String pass;
+
+  const HomeSearchPressed(this.user, this.pass);
+
+  @override
+  List<Object> get props => [user, pass];
 }
