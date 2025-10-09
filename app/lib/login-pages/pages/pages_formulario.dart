@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:perfil/login-pages/widget/failure_widget.dart';
-import 'package:perfil/success-pages/Cubit/cubit.dart';
 
-import '../bloc/bloc.dart';
+import '../../success-pages/Cubit/cubit.dart';
+import '../../success-pages/pages/pages.success.dart';
+import '../Bloc/bloc.dart';
 import '../Bloc/event.dart';
 import '../Bloc/state.dart';
-import '../cubit/cubit.dart';
+import '../widget/failure_widget.dart';
 import '../widget/loading_widget.dart';
-import 'LoadingView.dart';
-import 'ErrorView.dart';
-import 'success.dart';
-
 class ViewLogin extends StatelessWidget {
   const ViewLogin({super.key});
 
@@ -33,14 +29,14 @@ class _LoginContent extends StatelessWidget {
     final passController = TextEditingController();
 
     return Scaffold(
-      body: BlocConsumer<HomeBloc, HomeState>(
+      body: BlocConsumer<HomeBloc, HomeState>(  
         listener: (context, state) {
           if (state is Correcto) {
             Navigator.push(
               context,
               MaterialPageRoute(
                 builder: (_) => BlocProvider(
-                  create: (_) => MyCubit()..cargarCarro(), // ✅ Cubit inyectado
+                  create: (_) => PageCubit()..cargarCarro(), // ✅ Cubit inyectado
                   child: const Home(),
                 ),
               ),
@@ -49,9 +45,9 @@ class _LoginContent extends StatelessWidget {
         },
         builder: (context, state) {
           if (state is Cargando) {
-            return const Loading();
+            return const ViewCargando();
           } else if (state is Error) {
-            return Failure();
+            return ViewError();
           }
 
           return Center(
