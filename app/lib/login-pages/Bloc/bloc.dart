@@ -7,6 +7,7 @@ import 'state.dart';
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc() : super(Initial()) {
     on<HomeSearchPressed>((event, emit) async {
+      emit(Cargando());
 
       final dio = Dio();
       final url = "https://jsonplaceholder.typicode.com/posts";
@@ -19,6 +20,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         );
 
         if (response.statusCode == 201) {
+          await Future.delayed(const Duration(seconds: 7));
           emit(Correcto());
         } else {
           emit(Error());
